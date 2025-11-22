@@ -8,8 +8,16 @@ root.configure(bg="lightblue")
 label1 = Label(root,text="Number guessing game",font=("Ariel",30,"bold"))
 label1.place(x=70,y=50)
 
+ran_number = random.randint(1,10)
+
 def random_number():
-    ran_number = random.randint(1,10)
+    guess = int(entry2.get())
+    if guess > ran_number:
+        label4.config(text="Lower")
+    elif guess < ran_number:
+        label4.config(text="Higher")
+    else:
+        label4.config(text="You guessed right!")
 
 def button_confirm():
     name = (entry1.get())
@@ -29,6 +37,11 @@ entry2.place(x=250,y=250)
 label3 = (root)
 
 button1 = Button(root,text="Confirm",command=button_confirm)
-button1.place(x=250,y=350)
+button1.place(x=250,y=200)
+
+button2 = Button(root,text="Complete guess",command=random_number)
+button2.place(x=100,y=325)
+label4 = Label(root)
+label4.place(x=250,y=325)
 
 root.mainloop()
